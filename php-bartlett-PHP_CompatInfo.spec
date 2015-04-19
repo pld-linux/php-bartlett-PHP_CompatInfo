@@ -1,4 +1,5 @@
 %define		pearname	PHP_CompatInfo
+%define		php_min_version 5.2.1
 %include	/usr/lib/rpm/macros.php
 Summary:	%{pearname} - Find out the minimum version and the extensions required for a piece of code to run
 Name:		php-bartlett-PHP_CompatInfo
@@ -14,6 +15,7 @@ BuildRequires:	php-packagexml2cl
 BuildRequires:	php-pear-PEAR >= 1:1.9.0
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
 BuildRequires:	rpmbuild(macros) >= 1.610
+Requires:	php(core) >= %{php_min_version}
 Requires:	php(dom)
 Requires:	php(pcre)
 Requires:	php(reflection)
