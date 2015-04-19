@@ -28,6 +28,7 @@ Requires:	php-pear-Console_CommandLine >= 1.2.0
 Suggests:	php-pear-Net_Growl
 Suggests:	php-phpunit-PHPUnit
 Suggests:	php-phpunit-PHP_Timer
+Provides:	phpcompatinfo = %{version}-%{release}
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -45,13 +46,16 @@ and ability to show content of dictionary references.
 %prep
 %pear_package_setup
 
+mv docs/%{pearname}/* .
+
 %build
 packagexml2cl package.xml > ChangeLog
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{php_pear_dir}
+install -d $RPM_BUILD_ROOT{%{php_pear_dir},%{_bindir}}
 %pear_package_install
+install -p ./%{_bindir}/* $RPM_BUILD_ROOT%{_bindir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,12 +65,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc ChangeLog install.log
-%doc optional-packages.txt
-%doc docs/PHP_CompatInfo/*
-%{php_pear_dir}/.registry/.channel.*/*.reg
+%doc LICENSE ChangeLog install.log optional-packages.txt
 #%config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/pear/PHP_CompatInfo/phpcompatinfo.xml.dist
-#%attr(755,root,root) %{_bindir}/phpcompatinfo
+%attr(755,root,root) %{_bindir}/phpcompatinfo
+%{php_pear_dir}/.registry/.channel.*/*.reg
 %{php_pear_dir}/Bartlett/PHP/CompatInfo.php
 %{php_pear_dir}/Bartlett/PHP/CompatInfo
 %{php_pear_dir}/data/PHP_CompatInfo
