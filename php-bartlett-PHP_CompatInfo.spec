@@ -9,7 +9,7 @@ License:	BSD License
 Group:		Development/Languages/PHP
 Source0:	http://bartlett.laurent-laville.org/get/%{pearname}-%{version}.tgz
 # Source0-md5:	ca6f0922e26119157efb891cd51d6c66
-URL:		http://bartlett.laurent-laville.org/package/PHP_CompatInfo/
+URL:		http://php5.laurent-laville.org/compatinfo/
 BuildRequires:	php-channel(bartlett.laurent-laville.org)
 BuildRequires:	php-packagexml2cl
 BuildRequires:	php-pear-PEAR >= 1:1.9.0
