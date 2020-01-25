@@ -1,6 +1,5 @@
 %define		pearname	PHP_CompatInfo
 %define		php_min_version 5.2.1
-%include	/usr/lib/rpm/macros.php
 Summary:	%{pearname} - Find out the minimum version and the extensions required for a piece of code to run
 Name:		php-bartlett-PHP_CompatInfo
 Version:	2.26.0
